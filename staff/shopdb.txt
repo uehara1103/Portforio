@@ -1,0 +1,92 @@
+create database shop
+default character
+set utf8;
+
+grant all privileges on shop. * shop_user@'localhost' identified by
+'shop_pass'
+with
+grant option;
+
+use shop;
+
+CREATE TABLE mst_product
+(
+    code int
+    unsigned not null auto_increment,
+    name varchar
+    (30) not null,
+    price int unsigned not null,
+    gazou varchar
+    (30),
+    delete_flg tinyint
+    (1) unsigned not null default 0,
+    primary key
+    ( code )
+);
+
+    CREATE TABLE dat_sales
+    (
+        code int
+        unsigned not null auto_increment,--注文コード
+    date timestamp not null,--注文日時
+    code_member int unsigned not null,--会員コード
+    name varchar
+        (15) not null,
+    email varchar
+        (50) not null,
+    postal1 varchar
+        (3) not null,
+    postal2 varchar
+        (4) not null,
+    address varchar
+        (50) not null,
+    tel varchar
+        (13) not null,
+    delete_flg tinyint
+        (1) unsigned not null default 0,
+    primary key
+        ( code )
+);
+
+
+
+        CREATE TABLE dat_sales_product
+        (
+            code int
+            unsigned not null auto_increment,--注文明細コード
+    code_sales int unsigned not null,--注文コード
+    code_product int unsigned not null,--商品コード
+    price int unsigned not null,--価格
+    quantity int unsigned not null,--数量
+    delete_flg tinyint
+            (1) unsigned not null default 0,
+    primary key
+            ( code )
+);
+
+            CREATE TABLE dat_member
+            (
+                code int
+                unsigned not null auto_increment,
+    date timestamp not null,
+    password varchar
+                (255) not null,
+    name varchar
+                (15) not null,
+    email varchar
+                (50) not null,
+    postal1 varchar
+                (3) not null,
+    postal2 varchar
+                (4) not null,
+    address varchar
+                (50) not null,
+    tel varchar
+                (13) not null,
+    danjo int unsigned not null,
+    born int unsigned not null,
+    delete_flg tinyint
+                (1) unsigned not null default 0,
+    primary key
+                ( code )
+);

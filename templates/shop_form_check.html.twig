@@ -1,0 +1,104 @@
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Perlebon kids &ndash; {{title}}</title>
+</head>
+
+<body>
+{% include 'header_cart.html.twig'%}
+
+<div class="register_check">
+    {% if onamae == '' %}
+        お名前が入力されていません。<br/><br/>
+    {% set okflg = false %}
+    {% else %}
+        お名前<br/>
+        {{onamae}}<br/><br/>
+    {% endif %}
+
+    {% if email == '' %}
+        メールアドレスを正確に入力してください。<br/><br/>
+    {% set okflg = false %}
+    {% else %}
+        メールアドレス<br/>
+        {{email}}<br/><br/>
+    {% endif %}
+    {# PHPの||はTwigだとor #}
+    {% if postal1 == '' or postal2 == '' %}
+        郵便番号は半角数字で入力してください。<br/><br/>
+    {% set okflg = false %}
+    {% else %}
+        郵便番号<br/>
+        {{postal1}}-{{postal2}}<br/><br/>
+    {% endif %}
+
+    {% if address == '' %}
+        住所が入力されていません。<br/><br/>
+    {% set okflg = false %}
+    {% else %}
+        住所<br/>
+        {{address}}<br/><br/>
+    {% endif %}
+
+    {% if tel == '' %}
+        電話番号を正確に入力してください。<br/><br/>
+    {% set okflg = false %}
+    {% else %}
+        電話番号<br/>
+        {{tel}}<br/><br/>
+    {% endif %}
+
+
+    {% if chumon == 'chumontouroku' %}
+    {% if pass == '' %}
+        パスワードが入力されていません。<br/><br/>
+    {% set okflg = false %}
+    {% endif %}
+
+    {% if pass != pass2 %}
+        パスワードが一致しません。<br/><br/>
+    {% set okflg = false %}
+    {% endif %}
+
+        性別<br/>
+    {% if danjo == 'dan' %}
+        男性<br/><br/>
+    {% else %}
+        女性<br/><br/>
+    {% endif %}
+
+        生まれ年<br/>
+        {{birth}}年代<br/><br/>
+    {% endif %}
+
+
+    {% if okflg == true %}
+        <form method="post" action="shop_form_done.php">
+        <input type="hidden" name="onamae" value="{{onamae}}">
+        <input type="hidden" name="email" value="{{email}}">
+        <input type="hidden" name="postal1" value="{{postal1}}">
+        <input type="hidden" name="postal2" value="{{postal2}}">
+        <input type="hidden" name="address" value="{{address}}">
+        <input type="hidden" name="tel" value="{{tel}}">
+        <input type="hidden" name="chumon" value="{{chumon}}">
+        <input type="hidden" name="pass" value="{{pass}}">
+        <input type="hidden" name="pass2" value="{{pass2}}">
+        <input type="hidden" name="danjo" value="{{danjo}}">
+        <input type="hidden" name="birth" value="{{birth}}">
+        <input type="button" onclick="history.back()" value="戻る">  
+        <input type="submit" value="OK"><br/>
+    {% else %}
+        <form>
+        <input type="button" onclick="history.back()" value="戻る">
+        </form>
+    {% endif %}
+</div>
+
+{% include 'footer_cart.html.twig'%}
+
+  
+</body>
+
+</html>

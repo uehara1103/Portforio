@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Perlebon kids &ndash; {{title}}</title>
+</head>
+
+<body>
+    {% include 'header.html.twig' %}
+    <div class="search_result">
+        {% if search is empty %}
+        {# formを使っている場合ぺージ遷移される。
+        遷移させたくない場合はAjaxで非同期通信する必要がある。 #}
+        入力されていません。<br/><br/>
+            {% else %}
+                <br/>
+                {{search}}で検索しました。<br/>
+                検索結果　{{row_count}}件<br/>
+
+            {% for value in data %} 
+                    <a href="http://localhost/exam4/shop/shop_product.php?procode={{value[1]}}">
+                {{value[0]}}<br/>
+                </a>
+            {% endfor %}
+        
+        {% endif %}
+            
+            <a href="../toppage/index.html">TOPぺージへ</a>
+    </div>
+
+    {% include 'footer.html.twig'%}
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Perlebon kids &ndash; {{title}}</title>
+</head>
+
+<body>
+{% include 'header_cart.html.twig'%}
+
+<div class="kantan_check">
+    
+        お名前<br/>
+        {{onamae}}<br/><br/>
+
+        メールアドレス<br/>
+        {{email}}<br/><br/>
+
+        郵便番号<br/>
+        {{postal1}}-{{postal2}}<br/><br/>
+
+        住所<br/>
+        {{address}}<br/><br/>
+
+        電話番号<br/>
+        {{tel}}<br/><br/>
+
+        <form method="post" action="shop_kantan_done.php">
+            <input type="hidden" name="onamae" value="{{onamae}}">
+            <input type="hidden" name="email" value="{{email}}">
+            <input type="hidden" name="postal1" value="{{postal1}}">
+            <input type="hidden" name="postal2" value="{{postal2}}">
+            <input type="hidden" name="address" value="{{address}}">
+            <input type="hidden" name="tel" value="{{tel}}">
+            <input type="button" onclick="history.back()" value="戻る">  
+            <input type="submit" value="OK"><br/>
+        </form>
+</div>
+
+{% include 'footer_cart.html.twig'%}
+
+  
+</body>
+
+</html>
